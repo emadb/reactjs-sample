@@ -1,0 +1,1 @@
+module.exports = ['react', 'react-dom', 'react-router', 'superagent', 'ramda']
