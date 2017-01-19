@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDom from 'react-dom'
 
 const App = React.createClass({
   render(){
@@ -6,6 +7,8 @@ const App = React.createClass({
       <div>
         <h2>hello</h2>
       </div>
-      )
+    )
   }
 })
+
+ReactDom.render(<App />, document.getElementById('app'))

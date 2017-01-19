@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "plugins": ["add-module-exports","react-require"],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    },
+    "production": {
+      "presets": []
+    },
+    "test" : {
+      "plugins": [
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": { "settings": "./src/environments/test" }
+        }]
+      ],
+      "presets": []
+    }
+  }
+}
