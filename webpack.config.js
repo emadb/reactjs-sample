@@ -32,7 +32,7 @@ module.exports = {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'),  
       new webpack.NoErrorsPlugin(),
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /it|en/),
+      //new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /it|en/),
       new HtmlWebpackPlugin({
         filename: 'index.html', 
         css: '',
