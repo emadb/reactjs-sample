@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import Foo from './Foo'
 
 const App = React.createClass({
   render(){
     return (
       <div>
-        <h2>hello</h2>
+        <h2>Spot</h2>
+        <Foo />
       </div>
     )
   }

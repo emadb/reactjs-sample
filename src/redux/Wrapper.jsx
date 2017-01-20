@@ -1,7 +1,5 @@
 import React from 'react'
-import xs from 'xstream'
-import actions from './actionStream'
-import ws from './webSocketStream'
+import AppDispatcher from './AppDispatcher'
 
 function combineReducers(reducers, state, action){
   const newState = reducers.reduce((acc, r) => {
@@ -17,19 +15,14 @@ function Wrapper(InnerComponent, reducers = [], initialState = {}) {
       return {innerState: initialState}
     },
     componentWillMount() {
-      const actionStream = actions.createStream()
-      const wsStream = ws.createStream() 
-      this.stream = xs.merge(wsStream, actionStream)
-      this.listener = {
-        next: s => this.setState({innerState: s})
-      }
-
-      this.stream
-        .map(action => combineReducers(reducers, this.state.innerState, action))
-        .addListener(this.listener)
+      this.regId = AppDispatcher.register(action => {
+        const nextState = combineReducers(reducers, this.state.innerState, action)
+        console.log('Update', nextState)
+        this.setState({innerState: nextState})
+      })  
     },
     componentWillUnmount() {
-      this.stream.removeListener(this.listener)
+      AppDispatcher.unregister(this.regId)
     },
     render() {
       return <InnerComponent {...this.state.innerState} {...this.props} />
