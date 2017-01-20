@@ -9,7 +9,7 @@ module.exports = {
       app:[
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
-        'font-awesome-sass-loader',
+        //'font-awesome-sass-loader',
         path.resolve(__dirname, 'src/app/App.jsx')
       ],
       vendors: require('./vendor-lib')
@@ -20,18 +20,21 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-      extensions: ['', '.js', '.jsx'],
-      root: path.resolve(__dirname, 'src'),
+        extensions: ['.js', '.jsx'],
+        modules: [
+          path.join(__dirname, "src"),
+          "node_modules"
+      ],
       alias:{
         'settings': 'environments/dev'
       }
     },
-    eslint: {
-      configFile: 'eslint.config.json'
-    },
+    // eslint: {
+    //   configFile: 'eslint.config.json'
+    // },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'),  
-      new webpack.NoErrorsPlugin(),
+      new webpack.optimize.CommonsChunkPlugin({name:'vendors', filename:'js/vendors.js'}),  
+      //new webpack.NoErrorsPlugin(),
       //new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /it|en/),
       new HtmlWebpackPlugin({
         filename: 'index.html', 
@@ -41,24 +44,25 @@ module.exports = {
       })
     ],
     module: {
-      preLoaders: [
+      rules: [
         {
+          enforce: 'pre',
           test: /\.jsx?$/,
-          loaders: ['eslint'],
-          include:  path.resolve(__dirname, 'src')
-        }
-      ],
-      loaders: [
-        {test: /\.html$/, loaders: ['file?name=[name].[ext]']},
-        {test: /\.css$/, loader: 'style!css?sourceMap'},
-        {test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/},
-        {test: /\.scss$/, loaders: ["style", "css?sourceMap=true&root=../", "sass?sourceMap=true&root=../"]},
-        {test: /\.json$/, loader: 'json-loader'},
-        {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-        {test: /\.otf?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-        {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-        {test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file" },
-        {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
-        {test: /\.(png|jpg|jpeg|gif|woff)$/, loader: "url?limit=10000" }]
+          exclude: /node_modules/,
+          use: [{loader: 'eslint-loader',options: {configFile: 'eslint.config.json'}}],
+          include:  path.resolve(__dirname, 'src'),
+          
+        },
+        {test: /\.html$/, loader: 'file?name=[name].[ext]'},
+        {test: /\.css$/, use: ['style','css?sourceMap']},
+        {test: /\.jsx?$/, use: ['babel-loader'], exclude: /node_modules/},
+        {test: /\.scss$/, use: ["style", "css?sourceMap=true&root=../", "sass?sourceMap=true&root=../"]},
+        {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: [{loader: "url-loader?limit=10000&mimetype=application/font-woff" }]},
+        {test: /\.otf?$/, use: [{loader: "url?limit=10000&mimetype=application/octet-stream" }]},
+        {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, use: [{loader: "url?limit=10000&mimetype=application/octet-stream" }]},
+        {test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: [{loader: "file" }]},
+        {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: [{loader: "url?limit=10000&mimetype=image/svg+xml" }]},
+        {test: /\.(png|jpg|jpeg|gif|woff)$/, use: [{loader: "url?limit=10000" }]}
+      ]
     }
 };
