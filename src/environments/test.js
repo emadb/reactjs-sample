@@ -1,5 +1,5 @@
 const settings = {
-  host: 'http://localhost:4000'
+  host: 'https://api.spotify.com/v1'
 };
 
 export default settings;
