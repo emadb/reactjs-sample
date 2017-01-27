@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import Search from './search'
 
+require('../sass/style.scss')
+
 const App = React.createClass({
   render(){
     return (

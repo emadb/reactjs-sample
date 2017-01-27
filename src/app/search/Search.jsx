@@ -6,6 +6,9 @@ const Foo = React.createClass({
     searchActions.search(this.refs.searchText.value)
   },
   render(){
+
+    console.log('this.props.artists', this.props.artists)
+
     return (
       <div>
         <input type="text" ref="searchText"/>
