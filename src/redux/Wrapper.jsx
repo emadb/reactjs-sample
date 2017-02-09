@@ -17,7 +17,6 @@ function Wrapper(InnerComponent, reducers = [], initialState = {}) {
     componentWillMount() {
       this.regId = AppDispatcher.register(action => {
         const nextState = combineReducers(reducers, this.state.innerState, action)
-        console.log('Update', nextState)
         this.setState({innerState: nextState})
       })  
     },
