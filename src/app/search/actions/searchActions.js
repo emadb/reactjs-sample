@@ -1,5 +1,5 @@
-import AppDispatcher from '../../redux/AppDispatcher'
-import api from '../apiClient'
+import AppDispatcher from '../../../redux/AppDispatcher'
+import api from '../../apiClient'
 
 const actions = {
   search(what){

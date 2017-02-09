@@ -42,7 +42,7 @@
     - hot reload
   - Testing
 
-5) **A real world application (branch `spotify`)**
+5) **A real world application (branch `master`)**
   - A spotify client
     - Search for an artist
     - Show the artists
