@@ -48,6 +48,8 @@
     - Show the artists
     - Show the albumns of that artist
     - Add the album to the basket
+  - Routing
+  - Testing
 
 
   
