@@ -7,7 +7,7 @@ function setArtists(state, action){
 }
 
 function projector(state){
- return state; //identity!
+  return state; //identity!
 }
 
 module.exports = [buildReducer(setArtists, projector)]
