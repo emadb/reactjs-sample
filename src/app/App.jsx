@@ -1,1 +1,1 @@
-require('../sass/style.scss')
+console.log('it works!')
