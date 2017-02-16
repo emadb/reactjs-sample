@@ -7,9 +7,12 @@ describe('<SearchBox />', () => {
   
   it('click on search should call onSearch callback', (done) => {
     const component = mount(<SearchBox onSearch={(evt) => {
+      console.log('-', evt)
       done()
     }}/>)
-    component.find('.form-control').simulate('change', { target: { value: 'Hello' } })
+    const input = component.find('.form-control')
+    input.get(0).value = 'text'       // have to get the node...
+    input.first().simulate('change')  // have to use the wrapper...
     component.find('button').simulate('click')
   })
 })
