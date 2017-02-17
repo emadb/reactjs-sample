@@ -1,4 +1,4 @@
-# React from my POV
+# React tutorial
 
 ### Agenda
 1) **Intro**
@@ -10,8 +10,11 @@
 
 2) **An intro to the reactjs world**
   - The idea of reactjs 
-    - Composition
+    - Declarative programming
     - Functional approach
+    - Composition
+    - JSX
+    - Reusable components
   - Create a component (branch `intro`)
     - createClass/extends  
     - Rendering
