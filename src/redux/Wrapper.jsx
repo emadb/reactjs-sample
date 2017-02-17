@@ -11,7 +11,7 @@ function combineReducers(reducers, state, action){
 
 function Wrapper(InnerComponent, reducers = [], initialState = {}) {
   return React.createClass({
-    getInitialState(){
+    getInitialState() {
       return {innerState: initialState}
     },
     componentWillMount() {

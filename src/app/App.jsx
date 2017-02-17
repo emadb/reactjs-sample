@@ -1,17 +1,14 @@
-import React from 'react'
 import ReactDom from 'react-dom'
-
+//import Counter from './Counter'
+import SearchPage from './Search/SearchPage'
+import ArtistDetailPage from './ArtistDetail/ArtistDetailPage'
+import {Router, Route, hashHistory} from 'react-router'
 
 require('../sass/style.scss')
 
-const App = React.createClass({
-  render(){
-    return (
-      <div>
-        <h2>Spotify</h2>
-      </div>
-    )
-  }
-})
-
-ReactDom.render(<App />, document.getElementById('app'))
+ReactDom.render((
+  <Router history={hashHistory}>
+    <Route path='/artists' component={SearchPage} />
+    <Route path='/artists/:id' component={ArtistDetailPage} />
+  </Router>
+), document.getElementById('app'))
