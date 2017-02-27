@@ -9,7 +9,7 @@ function combineReducers(reducers, state, action){
   return newState
 }
 
-function Wrapper(InnerComponent, reducers = [], initialState = {}) {
+function withState(InnerComponent, reducers = [], initialState = {}) {
   return React.createClass({
     getInitialState(){
       return {innerState: initialState}
@@ -29,4 +29,4 @@ function Wrapper(InnerComponent, reducers = [], initialState = {}) {
   })
 }
 
-export default Wrapper
+export default withState
