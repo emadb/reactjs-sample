@@ -9,7 +9,6 @@ module.exports = {
       app:[
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
-        'font-awesome-sass-loader',
         path.resolve(__dirname, 'src/app/App.jsx')
       ],
       vendors: require('./vendor-lib')
@@ -32,6 +31,7 @@ module.exports = {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'),  
       new webpack.NoErrorsPlugin(),
+      //new webpack.ProvidePlugin({$: "jquery"}),
       //new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /it|en/),
       new HtmlWebpackPlugin({
         filename: 'index.html', 

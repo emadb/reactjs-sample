@@ -1,6 +1,6 @@
 import React from 'react'
 import AppDispatcher from '../redux/AppDispatcher'
-import Wrapper from '../redux/Wrapper'
+import withState from '../redux/withState'
 import buildReducer from '../redux/buildReducer'
 
 const Foo = React.createClass({
@@ -27,4 +27,4 @@ function reducer2(state) {
 
 
 
-export default Wrapper(Foo, [buildReducer(reducer1), buildReducer(reducer2)], {message: 'loaded'})
+export default withState(Foo, [buildReducer(reducer1), buildReducer(reducer2)], {message: 'loaded'})

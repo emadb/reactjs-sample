@@ -1,10 +1,8 @@
 const request = require('superagent')
 const settings = require('settings')
 const baseUrl = settings.host
-//var token = JSON.parse(localStorage.getItem('spotreact_token'));
-//request.set('x-access-token', token.token);
 
-var client = {
+const client = {
   del: function(path) {
     return request
       .del(baseUrl + path)
