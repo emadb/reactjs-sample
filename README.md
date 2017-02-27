@@ -1,14 +1,7 @@
 # React tutorial
 
 ### Agenda
-1) **Intro**
-  - I'm not an expert. If you need an expert contact @michelebertoli
-  - I don't know the internals details
-  - I'm not on the edge with tooling
-  - I'm a `no-framework` sustainer
-  - Principles!
-
-2) **An intro to the reactjs world**
+1) **An intro to the reactjs world**
   - The idea of reactjs 
     - Declarative programming
     - Functional approach
